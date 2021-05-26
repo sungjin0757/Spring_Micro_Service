@@ -17,8 +17,8 @@
 - Spring Cloud Sleuth(Scheduled,Not Yet)
 - Docker(Scheduled,Not Yet)
 </br>
+
 ### DEVELOP LOG
->
 - 2021/05/22 Add ServiceDiscovery Using Spring Cloud Netflix Eureka
 	- discoveryservice : Eureka Server
 	- userservice : Eureka Client
@@ -29,6 +29,7 @@
 - 2021/05/27 Add Spring Cloud Gateway
 	- dependencies : Filter Test Using Java & yml, Add Custom Filter(Pre Filter, Post Filter)
 </br>
+
 ### ISSUE
 - Eureka Server For ServiceDiscovery
 	- Load Balancer
