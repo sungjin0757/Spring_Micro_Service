@@ -27,7 +27,9 @@
 	- Second Service for : Test
 	- zuulservice  : API Gateway
 - 2021/05/27 Add Spring Cloud Gateway
-	- dependencies : Filter Test Using Java & yml, Add Custom Filter(Pre Filter, Post Filter)
+	- gateway-service : Filter Test Using Java & yml, Add Custom Filter(Pre Filter, Post Filter)
+- 2021/05/30 Modify Spring cloud Gateway
+	- gateway-service:Add Global Filter, Logging Filter
 </br>
 
 ### ISSUE
@@ -37,5 +39,11 @@
 	- Proxy Request & Response
 	- Filtering Request & Response
 		- Custom Filter
+			- Pre Filter : Log Request_ID
+			- Post Filter : Log Respons_status
+		- Global Filter
+			- Pre Filter : Log Request_ID
+			- Post Filter : Log Respons_status
+		- Logging Filter
 			- Pre Filter : Log Request_ID
 			- Post Filter : Log Respons_status
