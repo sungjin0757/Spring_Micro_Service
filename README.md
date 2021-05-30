@@ -29,7 +29,11 @@
 - 2021/05/27 Add Spring Cloud Gateway
 	- gateway-service : Filter Test Using Java & yml, Add Custom Filter(Pre Filter, Post Filter)
 - 2021/05/30 Modify Spring cloud Gateway
-	- gateway-service:Add Global Filter, Logging Filter
+	- gateway-service : Add Global Filter, Logging Filter
+- 2021/05/31 Modify Spring cloud Gateway
+	- gateway-service : Modify application.yml For Enrolling in Eureka Server 
+	- first-service : Modify application.yml For Enrolling in Eureka Server 
+	- second-service : Modify application.yml For Enrolling in Eureka Server 
 </br>
 
 ### ISSUE
