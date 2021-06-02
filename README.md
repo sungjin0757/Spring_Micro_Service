@@ -1,4 +1,4 @@
-# Spring_Micro_Service
+# Spring_Micro_Service -A Kind Of ShoppingMall Application Without Web Browser
 ### OUTLINE
 **Simple Application Using Micro Service Architecture**</br>
 
@@ -6,9 +6,9 @@
 - Spring Boot
 - Spring Cloud Netflix Eureka 
 - Spring Cloud Gateway
-- JPA(Scheduled,Not Yet)
+- JPA
 - Spring Security(Scheduled,Not Yet)
-- RestApi(Scheduled,Not Yet)
+- RestApi
 - Git(Scheduled,Not Yet)
 - Spring Cloud Config(Scheduled,Not Yet)
 - RabbitMQ : Spring Cloud Bus(Scheduled,Not Yet)
@@ -34,6 +34,12 @@
 	- gateway-service : Modify application.yml For Enrolling in Eureka Server 
 	- first-service : Modify application.yml For Enrolling in Eureka Server 
 	- second-service : Modify application.yml For Enrolling in Eureka Server 
+- 2021/06/03 Create Some Of UserService
+	- vo For Client Request
+	- Repository
+	- Service
+	- Controller
+	- domain
 </br>
 
 ### ISSUE
@@ -51,3 +57,9 @@
 		- Logging Filter
 			- Pre Filter : Log Request_ID
 			- Post Filter : Log Respons_status
+- User-Service(Only Using REST API Without Web Browser)
+	- Join(회원 가입)
+		- Client Request Body Is Converted To UserDto By Using ModelMapper
+			- UserDto Is Used For UserService
+		- UserDto Is Converted To UserEntity Using ModelMapper
+			- UserEntity Is Used For UserRepository
