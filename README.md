@@ -40,6 +40,7 @@
 	- Service
 	- Controller
 	- domain
+- 2021/06/04 Add Spring Security In UserService
 </br>
 
 ### ISSUE
@@ -63,3 +64,6 @@
 			- UserDto Is Used For UserService
 		- UserDto Is Converted To UserEntity Using ModelMapper
 			- UserEntity Is Used For UserRepository
+		- Spring Security For Password Encode
+			- BcryptPasswordEncode
+		- Spring Security For Authorization
