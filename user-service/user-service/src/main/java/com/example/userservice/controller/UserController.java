@@ -6,6 +6,7 @@ import com.example.userservice.vo.Greeting;
 import com.example.userservice.vo.RequestUser;
 import com.example.userservice.vo.ResponseUser;
 import lombok.RequiredArgsConstructor;
+import org.dom4j.rule.Mode;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.convention.MatchingStrategies;
 import org.springframework.core.env.Environment;
@@ -13,8 +14,11 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @RestController
-@RequestMapping("/")
+@RequestMapping("/user-service/")
 @RequiredArgsConstructor
 public class UserController {
 
@@ -22,9 +26,11 @@ public class UserController {
     private final Greeting greeting;
     private final UserService userService;
 
-    @GetMapping("/heath_check")
+    @GetMapping("/health_check")
     public String status(){
-        return "It's Working, I'm User-Service";
+
+        return String.format("It's Working, I'm User-Service on PORT %s"
+                ,env.getProperty("local.server.port"));
     }
 
     @GetMapping("/welcome")
@@ -43,6 +49,23 @@ public class UserController {
         ResponseUser responseUser=mapper.map(userDto,ResponseUser.class);
 
         return ResponseEntity.status(HttpStatus.CREATED).body(responseUser);
+    }
+
+    @GetMapping("/users")
+    public ResponseEntity<List<ResponseUser>> getUsers(){
+        List<UserDto> userByAll = userService.getUserByAll();
+        List<ResponseUser> collect = userByAll.stream()
+                .map(u -> new ResponseUser(u.getEmail(), u.getName(), u.getUserId(), u.getOrders()))
+                .collect(Collectors.toList());
+        return ResponseEntity.status(HttpStatus.OK).body(collect);
+    }
+
+    @GetMapping("/users/{userId}")
+    public ResponseEntity<ResponseUser> getUser(@PathVariable("userId")String userId){
+        UserDto dto = userService.getUserByUserId(userId);
+        ResponseUser responseUser=new ModelMapper().map(dto,ResponseUser.class);
+        return ResponseEntity.status(HttpStatus.OK).body(responseUser);
+
     }
 
 

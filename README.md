@@ -41,6 +41,9 @@
 	- Controller
 	- domain
 - 2021/06/04 Add Spring Security In UserService
+- 2021/06/06 Modify UserService & gateway
+	- gateway-service : Enroll USER-SERVICE for Routing
+	- USER-SERVICE : ADD Find Service
 </br>
 
 ### ISSUE
@@ -59,7 +62,14 @@
 			- Pre Filter : Log Request_ID
 			- Post Filter : Log Respons_status
 - User-Service(Only Using REST API Without Web Browser)
+	- health_check
+		- GetMapping("/health_check")
+		- return Present Port Number
+	- welcome
+		- GetMapping("/welcome")
+		- return Greeting Message(Welcome to the Simple Ecommerce.)
 	- Join(회원 가입)
+		- PostMapping("/users")
 		- Client Request Body Is Converted To UserDto By Using ModelMapper
 			- UserDto Is Used For UserService
 		- UserDto Is Converted To UserEntity Using ModelMapper
@@ -67,3 +77,8 @@
 		- Spring Security For Password Encode
 			- BcryptPasswordEncode
 		- Spring Security For Authorization
+	- Fine(회원 조회)
+		- findAll()
+			- GetMapping("/users")
+		- findByUserId(userId)
+			- GetMapping("/users/{userId}")
