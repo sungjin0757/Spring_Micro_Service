@@ -62,23 +62,25 @@
 			- Pre Filter : Log Request_ID
 			- Post Filter : Log Respons_status
 - User-Service(Only Using REST API Without Web Browser)
-	- health_check
-		- GetMapping("/health_check")
-		- return Present Port Number
-	- welcome
-		- GetMapping("/welcome")
-		- return Greeting Message(Welcome to the Simple Ecommerce.)
-	- Join(회원 가입)
-		- PostMapping("/users")
-		- Client Request Body Is Converted To UserDto By Using ModelMapper
-			- UserDto Is Used For UserService
-		- UserDto Is Converted To UserEntity Using ModelMapper
-			- UserEntity Is Used For UserRepository
-		- Spring Security For Password Encode
-			- BcryptPasswordEncode
-		- Spring Security For Authorization
-	- Fine(회원 조회)
-		- findAll()
-			- GetMapping("/users")
-		- findByUserId(userId)
-			- GetMapping("/users/{userId}")
+	- RequestMapping("/user-service/")
+	- Function
+		- health_check
+			- GetMapping("/health_check")
+			- return Present Port Number
+		- welcome
+			- GetMapping("/welcome")
+			- return Greeting Message(Welcome to the Simple Ecommerce.)
+		- Join(회원 가입)
+			- PostMapping("/users")
+			- Client Request Body Is Converted To UserDto By Using ModelMapper
+				- UserDto Is Used For UserService
+			- UserDto Is Converted To UserEntity Using ModelMapper
+				- UserEntity Is Used For UserRepository
+			- Spring Security For Password Encode
+				- BcryptPasswordEncode
+			- Spring Security For Authorization
+		- Find(회원 조회)
+			- findAll()
+				- GetMapping("/users")
+			- findByUserId(userId)
+				- GetMapping("/users/{userId}")
