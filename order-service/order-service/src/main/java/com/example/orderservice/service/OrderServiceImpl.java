@@ -29,7 +29,7 @@ public class OrderServiceImpl implements OrderService {
         List<OrderDto> dtos=new ArrayList<>();
 
         entities.forEach(e->{
-            dtos.add(new ModelMapper().map(entities,OrderDto.class));
+            dtos.add(new ModelMapper().map(e,OrderDto.class));
         });
 
         return dtos;
@@ -48,7 +48,7 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public OrderDto createOrder(OrderDto orderDto) {
-        orderDto.setUserId(UUID.randomUUID().toString());
+        orderDto.setOrderId(UUID.randomUUID().toString());
         orderDto.setTotalPrice(orderDto.getStock()*orderDto.getUnitPrice());
 
         ModelMapper mapper=new ModelMapper();

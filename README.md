@@ -9,7 +9,7 @@
 - JPA
 - Spring Security(Scheduled,Not Yet)
 - RestApi
-- Git(Scheduled,Not Yet)
+- Git
 - Spring Cloud Config(Scheduled,Not Yet)
 - RabbitMQ : Spring Cloud Bus(Scheduled,Not Yet)
 - Kafka(Scheduled,Not Yet)
@@ -44,6 +44,9 @@
 - 2021/06/06 Modify UserService & gateway
 	- gateway-service : Enroll USER-SERVICE for Routing
 	- USER-SERVICE : ADD Find Service
+- 2021/06/12 Add OrderService & CatalogService
+	- order-service : order, orderList
+	- catalog-service : orderItem
 </br>
 
 ### ISSUE
@@ -65,7 +68,7 @@
 	- RequestMapping("/user-service/")
 	- Function
 		- health_check
-			- GetMapping("/health_check")
+			- GetMapping("/health-check")
 			- return Present Port Number
 		- welcome
 			- GetMapping("/welcome")
@@ -84,3 +87,26 @@
 				- GetMapping("/users")
 			- findByUserId(userId)
 				- GetMapping("/users/{userId}")
+- Order-Service
+	- RequestMapping("/order-service")
+	- Function
+		- health_check
+			- GetMapping("/health-check")
+			- return Present Port Number
+		- order(주문)
+			- PostMapping("/orders/{userId}")
+			- Client Request Body Is Converted To OrderDto By Using ModelMapper
+				- OrderDto Is Used For OrderService
+			- OrderDto Is Converted To OrderEntity Using ModelMapper
+				- OrderEntity Is Used For OrderRepository
+		- Find(주문 조회)
+			- findByUserId(userId)
+				- GetMapping("/orders/{userId}")
+- Catalog-Service
+	- RequestMapping("/catalog-service")
+	- Function
+		- 상품 등록
+			- 서비스 시, 미리 SQL문을 통해 등록
+		- Find(상품 조회)
+			- findAll()
+				- GetMapping("/catalogs")
