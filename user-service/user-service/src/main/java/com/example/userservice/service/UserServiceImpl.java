@@ -8,6 +8,8 @@ import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.convention.MatchingStrategies;
 import org.modelmapper.spi.MatchingStrategy;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -60,5 +62,24 @@ public class UserServiceImpl implements UserService{
         });
 
         return dto;
+    }
+
+    @Override
+    public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
+        UserEntity entity = userRepository.findByEmail(userName);
+
+        if(entity==null){
+            throw new UsernameNotFoundException(userName);
+        }
+
+        //userdetailservice에있는 user객체를 반환
+        //이메일 검색이 끝나고 패스워드 비교
+        //패스워드도 잘 비교되면 검색된 사용자 값을 반환
+        return new User(entity.getEmail(), entity.getEncryptedPwd(),
+                true,true,true,true,
+                new ArrayList<>());
+
+        //arraylist를 넣는 이유는 로그인 되었을 때 그다음 작업중에서 권한을 추가하는 작업을 넣음
+        //현재 추가되어있는 권한이 없기 때문에 그냥 빈 리스트를 넣어줌
     }
 }

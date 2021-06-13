@@ -47,6 +47,8 @@
 - 2021/06/12 Add OrderService & CatalogService
 	- order-service : order, orderList
 	- catalog-service : orderItem
+- 2021/06/14 Modify UserService
+	- Add Login Function
 </br>
 
 ### ISSUE
@@ -87,6 +89,10 @@
 				- GetMapping("/users")
 			- findByUserId(userId)
 				- GetMapping("/users/{userId}")
+		- Login
+			- Using Spring Security
+				- Authentication
+				- Authority
 - Order-Service
 	- RequestMapping("/order-service")
 	- Function
