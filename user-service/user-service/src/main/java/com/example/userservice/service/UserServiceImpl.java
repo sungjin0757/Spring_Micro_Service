@@ -5,6 +5,7 @@ import com.example.userservice.dto.UserDto;
 import com.example.userservice.repository.UserRepository;
 import com.example.userservice.vo.ResponseOrder;
 import lombok.RequiredArgsConstructor;
+import org.dom4j.rule.Mode;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.convention.MatchingStrategies;
 import org.modelmapper.spi.MatchingStrategy;
@@ -81,5 +82,16 @@ public class UserServiceImpl implements UserService{
 
         //arraylist를 넣는 이유는 로그인 되었을 때 그다음 작업중에서 권한을 추가하는 작업을 넣음
         //현재 추가되어있는 권한이 없기 때문에 그냥 빈 리스트를 넣어줌
+    }
+
+    @Override
+    public UserDto getUserDetailsByEmail(String username) {
+        UserEntity entity = userRepository.findByEmail(username);
+
+        if (entity==null){
+            throw new UsernameNotFoundException(username);
+        }
+        UserDto userDto=new ModelMapper().map(entity,UserDto.class);
+        return userDto;
     }
 }

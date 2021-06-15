@@ -49,6 +49,9 @@
 	- catalog-service : orderItem
 - 2021/06/14 Modify UserService
 	- Add Login Function
+- 2021/06/15 Modify UserService & GatewayService
+	- Add JWT Token
+- 2021/06/16 Add Spring Cloud Config Server
 </br>
 
 ### ISSUE
@@ -66,6 +69,8 @@
 		- Logging Filter
 			- Pre Filter : Log Request_ID
 			- Post Filter : Log Respons_status
+		- Authorization Filter
+			- In user-service's GET Requests, Authenticate User's JWT Token (Check Authorization)
 - User-Service(Only Using REST API Without Web Browser)
 	- RequestMapping("/user-service/")
 	- Function
@@ -93,6 +98,7 @@
 			- Using Spring Security
 				- Authentication
 				- Authority
+				- JWT
 - Order-Service
 	- RequestMapping("/order-service")
 	- Function
@@ -116,3 +122,7 @@
 		- Find(상품 조회)
 			- findAll()
 				- GetMapping("/catalogs")
+- Config-Service
+	- Use a Local Git Repository 
+	- For dynamic config Information
+	- Call In External Config Information
