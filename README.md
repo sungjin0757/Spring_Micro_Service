@@ -52,6 +52,7 @@
 - 2021/06/15 Modify UserService & GatewayService
 	- Add JWT Token
 - 2021/06/16 Add Spring Cloud Config Server
+- 2021/06/17 Apply External Config In UserService & GatewayService
 </br>
 
 ### ISSUE

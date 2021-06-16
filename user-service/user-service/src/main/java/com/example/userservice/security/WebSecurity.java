@@ -27,6 +27,7 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
         http.csrf().disable();
        // http.authorizeRequests().antMatchers("/users/**").permitAll();
        //인증이 된 상태에서만 통과 가능하도록
+        http.authorizeRequests().antMatchers("/actuator/**").permitAll();
         http.authorizeRequests().antMatchers("/**")
                 .hasIpAddress("211.244.119.115")
                 .and()
