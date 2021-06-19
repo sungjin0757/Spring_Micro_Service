@@ -7,10 +7,10 @@
 - Spring Cloud Netflix Eureka 
 - Spring Cloud Gateway
 - JPA
-- Spring Security(Scheduled,Not Yet)
+- Spring Security
 - RestApi
 - Git
-- Spring Cloud Config(Scheduled,Not Yet)
+- Spring Cloud Config
 - RabbitMQ : Spring Cloud Bus(Scheduled,Not Yet)
 - Kafka(Scheduled,Not Yet)
 - ZipKin(Scheduled,Not Yet)
