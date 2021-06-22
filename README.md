@@ -11,7 +11,7 @@
 - RestApi
 - Git
 - Spring Cloud Config
-- RabbitMQ : Spring Cloud Bus(Scheduled,Not Yet)
+- RabbitMQ : Spring Cloud Bus
 - Kafka(Scheduled,Not Yet)
 - ZipKin(Scheduled,Not Yet)
 - Spring Cloud Sleuth(Scheduled,Not Yet)
@@ -53,6 +53,7 @@
 	- Add JWT Token
 - 2021/06/16 Add Spring Cloud Config Server
 - 2021/06/17 Apply External Config In UserService & GatewayService
+- 2021/06/23 Add RabbitMq for cloud bus
 </br>
 
 ### ISSUE
@@ -73,7 +74,6 @@
 		- Authorization Filter
 			- In user-service's GET Requests, Authenticate User's JWT Token (Check Authorization)
 - User-Service(Only Using REST API Without Web Browser)
-	- RequestMapping("/user-service/")
 	- Function
 		- health_check
 			- GetMapping("/health-check")
@@ -127,3 +127,9 @@
 	- Use a Local Git Repository 
 	- For dynamic config Information
 	- Call In External Config Information
+- Cloud Bus (RabbitMq)
+	- manage Jwt shared secret key & exipiration time
+	- Message Queueing
+		- config-service 
+		- user-service 
+		- gateway-service

@@ -29,7 +29,7 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
        //인증이 된 상태에서만 통과 가능하도록
         http.authorizeRequests().antMatchers("/actuator/**").permitAll();
         http.authorizeRequests().antMatchers("/**")
-                .hasIpAddress("211.244.119.115")
+                .hasIpAddress("218.38.83.27")
                 .and()
                 .addFilter(getAuthenticationFilter());
 
