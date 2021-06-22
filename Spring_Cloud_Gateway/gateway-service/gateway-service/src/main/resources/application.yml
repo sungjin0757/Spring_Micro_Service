@@ -7,10 +7,14 @@ eureka:
     fetch-registry: true
     service-url:
       defaultZone: http://localhost:8761/eureka
-
 spring:
   application:
     name: apigateway-service
+  rabbitmq:
+    host: 127.0.0.1
+    port: 5672
+    username: guest
+    password: guest
   cloud:
     gateway:
       default-filters:
@@ -20,6 +24,17 @@ spring:
             preLogger: true
             postLogger: true
       routes:
+        - id: first-service
+          uri: lb://MY-FIRST-SERVICE
+          predicates:
+            - Path=/first-service/**
+          filters:
+            - name: CustomFilter
+            - name: LoggingFilter
+              args:
+                baseMessage: Logging Filter!
+                preLogger: true
+                postLogger: true
 #        - id: user-service
 #          uri: lb://USER-SERVICE
 #          predicates:
@@ -57,14 +72,6 @@ spring:
           filters:
             - RemoveRequestHeader=Cookie
             - RewritePath=/user-service/(?<segment>.*), /$\{segment}
-        - id: first-service
-          uri: lb://MY-FIRST-SERVICE
-          predicates:
-            - Path=/first-service/**
-          filters:
-#            - AddRequestHeader=first-request, first-request-header2
-#            - AddResponseHeader=first-response, first-response-header2
-            - CustomFilter
         - id: catalog-service
           uri: lb://CATALOG-SERVICE
           predicates:
@@ -93,4 +100,4 @@ management:
   endpoints:
     web:
       exposure:
-        include: refresh, beans, health, httptrace
+        include: refresh, beans, health, httptrace, busrefresh
