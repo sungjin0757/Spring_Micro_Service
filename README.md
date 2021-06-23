@@ -54,6 +54,7 @@
 - 2021/06/16 Add Spring Cloud Config Server
 - 2021/06/17 Apply External Config In UserService & GatewayService
 - 2021/06/23 Add RabbitMq for cloud bus
+- 2021/06/24 Encrypt Plaint Text In Configuration
 </br>
 
 ### ISSUE

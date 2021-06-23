@@ -1,0 +1,6 @@
+encrypt:
+#  key: abcdefghijklmnopqrstuvwxyz0123456789
+  key-store:
+    location: file:///D:\Spring\Cloud\keystore\apiEncryptionKey.jks
+    password: test1234
+    alias: apiEncryptionKey
