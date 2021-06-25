@@ -7,7 +7,7 @@ import java.util.Date;
 @Data
 public class ResponseOrder {
     private String productId;
-    private Integer qty;
+    private Integer stock;
     private Integer unitPrice;
     private Integer totalPrice;
     private Date createdAt;
